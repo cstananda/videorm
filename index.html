@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>atividade Video</title>
+</head>
+<body>
+<video id="meuVideo" controls width="400" poster="capa1.jpg">
+  <source src="big_buck_bunny.mp4" type="video/mp4">
+  <track 
+    src="legendas.vtt" 
+    kind="subtitles" 
+    srclang="pt" 
+    label="Português"
+    default>
+  Seu navegador não suporta vídeo HTML5.
+</video>
+<br><br>
+<button onclick="mostrarInfo()">1) Info</button>
+<button onclick="alterarTamanho()">2) Alterar tamanho</button>
+<button onclick="mostrarAtributos()">3) Atributos</button>
+<button onclick="trocarPoster()">4) Trocar poster</button>
+
+<script>
+var v = document.getElementById("meuVideo");
+// 1) 
+function mostrarInfo() {
+  alert(
+    "videoWidth: " + v.videoWidth +
+    "\nvideoHeight: " + v.videoHeight +
+    "\ncanPlayType(mp4): " + v.canPlayType("video/mp4")
+  );
+}
+
+// 2) 
+function alterarTamanho() {
+  v.width = 600;
+  v.height = 300;
+}
+
+// 3) 
+function mostrarAtributos() {
+  alert(
+    "currentSrc: " + v.currentSrc +
+    "\ncontrols: " + v.controls +
+    "\nautoplay: " + v.autoplay +
+    "\nloop: " + v.loop +
+    "\nposter: " + v.poster +
+    "\nid: " + v.id +
+    "\nwidth: " + v.width +
+    "\nheight: " + v.height
+  );
+}
+
+// 4) 
+function trocarPoster() {
+  if (v.poster.includes("capa1.jpg")) {
+    v.poster = "capa2.jpg";
+  } else {
+    v.poster = "capa1.jpg";
+  }
+}
+
+// 5) eventos
+v.addEventListener("pause", function() {
+  alert("Vídeo pausado");
+});
+
+v.addEventListener("ended", function() {
+  alert("Vídeo finalizado");
+});
+
+</script>
+
+</body>
+</html>
+```
